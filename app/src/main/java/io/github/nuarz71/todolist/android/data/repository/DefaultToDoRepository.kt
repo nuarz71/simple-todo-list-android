@@ -7,4 +7,9 @@ internal class DefaultToDoRepository : ToDoRepository {
         //TODO: add implementation
         return Result.success(true)
     }
+    
+    override suspend fun deleteToDo(id: Long): Result<Boolean> {
+        //TODO: add implementation
+        return Result.success(true)
+    }
 }

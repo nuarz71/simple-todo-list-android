@@ -9,14 +9,12 @@ class EditToDoUseCase @Inject constructor(
     private val repository: ToDoRepository
 ) {
     
-    suspend operator fun invoke(todo: ToDoDto): Result<Boolean> {
-        return repository.addOrEditToDo(
-            AddEditToDoParameter(
-                id = todo.id,
-                title = todo.title,
-                description = todo.description,
-                dueDate = todo.dueDate
-            )
+    suspend operator fun invoke(todo: ToDoDto): Result<Boolean> = repository.addOrEditToDo(
+        AddEditToDoParameter(
+            id = todo.id,
+            title = todo.title,
+            description = todo.description,
+            dueDate = todo.dueDate
         )
-    }
+    )
 }

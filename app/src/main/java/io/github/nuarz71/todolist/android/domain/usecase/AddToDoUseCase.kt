@@ -12,13 +12,11 @@ class AddToDoUseCase @Inject constructor(
         title: String,
         description: String?,
         dueDate: LocalDateTime
-    ): Result<Boolean> {
-        return repository.addOrEditToDo(
-            AddEditToDoParameter(
-                title = title,
-                description = description,
-                dueDate = dueDate
-            )
+    ) = repository.addOrEditToDo(
+        AddEditToDoParameter(
+            title = title,
+            description = description,
+            dueDate = dueDate
         )
-    }
+    )
 }

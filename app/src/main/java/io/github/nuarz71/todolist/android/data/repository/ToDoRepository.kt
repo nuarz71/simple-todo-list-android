@@ -4,4 +4,5 @@ import io.github.nuarz71.todolist.android.data.repository.parameter.AddEditToDoP
 
 interface ToDoRepository {
     suspend fun addOrEditToDo(parameter: AddEditToDoParameter) : Result<Boolean>
+    suspend fun deleteToDo(id: Long) : Result<Boolean>
 }
