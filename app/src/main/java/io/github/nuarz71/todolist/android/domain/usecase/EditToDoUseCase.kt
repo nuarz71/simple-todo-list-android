@@ -10,7 +10,7 @@ class EditToDoUseCase @Inject constructor(
 ) {
     
     suspend operator fun invoke(todo: ToDoDto): Result<Boolean> {
-        return repository.addToDo(
+        return repository.addOrEditToDo(
             AddEditToDoParameter(
                 id = todo.id,
                 title = todo.title,
