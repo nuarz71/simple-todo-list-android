@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface ToDoRepository {
     
-    fun taskList() : Flow<List<TaskEntity>>
-    suspend fun addOrEditTask(parameter: AddEditTaskParameter) : Result<Boolean>
-    suspend fun deleteTask(id: Long) : Result<Boolean>
+    fun taskList(): Flow<List<TaskEntity>>
+    suspend fun addOrEditTask(parameter: AddEditTaskParameter): Result<Boolean>
+    suspend fun deleteTask(id: Long): Result<Unit>
     
-    suspend fun getTask(id: Long) : Result<TaskEntity>
+    suspend fun getTask(id: Long): Result<TaskEntity?>
 }

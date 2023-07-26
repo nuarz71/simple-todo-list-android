@@ -6,19 +6,22 @@ import androidx.room.Query
 import io.github.nuarz71.todolist.android.data.entity.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
-abstract class TaskDao {
+internal interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract suspend fun insert(todo: TaskEntity): Long
+    suspend fun insert(task: TaskEntity): Long
     
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract suspend fun insertAll(todos: List<TaskEntity>)
+    suspend fun insertAll(tasks: List<TaskEntity>)
     
     @Query("SELECT * FROM todo WHERE id=:id")
-    abstract suspend fun getToDo(id: Long): TaskEntity?
+    suspend fun getTaskById(id: Long): TaskEntity?
     
     @Query("SELECT * FROM todo ORDER BY id DESC")
-    abstract fun getAllToDo(): Flow<List<TaskEntity>>
+    fun getAllToDo(): Flow<List<TaskEntity>>
     
     @Query("DELETE FROM todo WHERE id=:id")
-    abstract fun deleteToDo(id: Long): Long
+    fun deleteTaskById(id: Long): Long
+    
+    @Query("DELETE FROM todo")
+    fun deleteAllTask()
 }

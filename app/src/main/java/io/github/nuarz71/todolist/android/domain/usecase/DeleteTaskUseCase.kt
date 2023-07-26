@@ -7,5 +7,5 @@ class DeleteTaskUseCase @Inject constructor(
     private val repository: ToDoRepository
 ) {
     
-    suspend operator fun invoke(id: Long): Result<Boolean> = repository.deleteTask(id = id)
+    suspend operator fun invoke(id: Long): Result<Unit> = repository.deleteTask(id = id)
 }
