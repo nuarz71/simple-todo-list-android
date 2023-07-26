@@ -1,11 +1,13 @@
 package io.github.nuarz71.todolist.android.data.local
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import io.github.nuarz71.todolist.android.data.entity.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 internal interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(task: TaskEntity): Long
