@@ -1,8 +1,8 @@
 package io.github.nuarz71.todolist.android.domain
 
-import io.github.nuarz71.todolist.android.data.entity.ToDoEntity
+import io.github.nuarz71.todolist.android.data.entity.TaskEntity
 import io.github.nuarz71.todolist.android.data.repository.ToDoRepository
-import io.github.nuarz71.todolist.android.domain.usecase.ListToDoUseCase
+import io.github.nuarz71.todolist.android.domain.usecase.ListTaskUseCase
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -15,26 +15,26 @@ import org.junit.Test
 import java.time.LocalDateTime
 
 class ListToDoUseCaseTest {
-    private lateinit var SUT: ListToDoUseCase
+    private lateinit var SUT: ListTaskUseCase
     private lateinit var repositoy: ToDoRepository
     
     @Before
     fun setup() {
         repositoy = mockk(relaxed = true)
-        SUT = ListToDoUseCase(repository = repositoy)
+        SUT = ListTaskUseCase(repository = repositoy)
     }
     
     @Test
     fun `List To Do Success with empty`() = runTest {
         
         every {
-            repositoy.todoList()
+            repositoy.taskList()
         } returns TEST_EMPTY_FLOW_ENTITY
         
         val result = SUT()
         
         verify(exactly = 1) {
-            repositoy.todoList()
+            repositoy.taskList()
         }
         assertEquals(result.first().isEmpty(), true)
     }
@@ -43,26 +43,26 @@ class ListToDoUseCaseTest {
     fun `List To Do Success with not empty`() = runTest {
         
         every {
-            repositoy.todoList()
+            repositoy.taskList()
         } returns TEST_FLOW_ENTITY
         
         val result = SUT()
         
         verify(exactly = 1) {
-            repositoy.todoList()
+            repositoy.taskList()
         }
         assertEquals(result.first().first().id, TEST_ENTITY.id)
     }
     
     companion object {
-        val TEST_ENTITY = ToDoEntity(
+        val TEST_ENTITY = TaskEntity(
             id = 1,
             title = "Testing",
             dueDate = LocalDateTime.now(),
             description = null
         )
         
-        val TEST_EMPTY_FLOW_ENTITY = flowOf(emptyList<ToDoEntity>())
+        val TEST_EMPTY_FLOW_ENTITY = flowOf(emptyList<TaskEntity>())
         val TEST_FLOW_ENTITY = flowOf(listOf(TEST_ENTITY))
         
         val TEST_EXCEPTION = IllegalArgumentException("Testing")

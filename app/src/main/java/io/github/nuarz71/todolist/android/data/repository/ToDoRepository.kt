@@ -1,12 +1,14 @@
 package io.github.nuarz71.todolist.android.data.repository
 
-import io.github.nuarz71.todolist.android.data.entity.ToDoEntity
-import io.github.nuarz71.todolist.android.data.repository.parameter.AddEditToDoParameter
+import io.github.nuarz71.todolist.android.data.entity.TaskEntity
+import io.github.nuarz71.todolist.android.data.repository.parameter.AddEditTaskParameter
 import kotlinx.coroutines.flow.Flow
 
 interface ToDoRepository {
     
-    fun todoList() : Flow<List<ToDoEntity>>
-    suspend fun addOrEditToDo(parameter: AddEditToDoParameter) : Result<Boolean>
-    suspend fun deleteToDo(id: Long) : Result<Boolean>
+    fun taskList() : Flow<List<TaskEntity>>
+    suspend fun addOrEditTask(parameter: AddEditTaskParameter) : Result<Boolean>
+    suspend fun deleteTask(id: Long) : Result<Boolean>
+    
+    suspend fun getTask(id: Long) : Result<TaskEntity>
 }

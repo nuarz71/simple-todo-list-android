@@ -1,8 +1,8 @@
 package io.github.nuarz71.todolist.android.domain
 
 import io.github.nuarz71.todolist.android.data.repository.ToDoRepository
-import io.github.nuarz71.todolist.android.data.repository.parameter.AddEditToDoParameter
-import io.github.nuarz71.todolist.android.domain.usecase.AddToDoUseCase
+import io.github.nuarz71.todolist.android.data.repository.parameter.AddEditTaskParameter
+import io.github.nuarz71.todolist.android.domain.usecase.AddTaskUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -13,20 +13,20 @@ import org.junit.Test
 import java.time.LocalDateTime
 
 class AddToDoUseCaseTest {
-    private lateinit var SUT: AddToDoUseCase
+    private lateinit var SUT: AddTaskUseCase
     private lateinit var repositoy: ToDoRepository
     
     @Before
     fun setup() {
         repositoy = mockk(relaxed = true)
-        SUT = AddToDoUseCase(repository = repositoy)
+        SUT = AddTaskUseCase(repository = repositoy)
     }
     
     @Test
     fun `Add To Do Success`() = runTest {
         
         coEvery {
-            repositoy.addOrEditToDo(TEST_DATA)
+            repositoy.addOrEditTask(TEST_DATA)
         } returns Result.success(true)
         
         val result = SUT(
@@ -36,7 +36,7 @@ class AddToDoUseCaseTest {
         )
         
         coVerify(exactly = 1) {
-            repositoy.addOrEditToDo(TEST_DATA)
+            repositoy.addOrEditTask(TEST_DATA)
         }
         assertEquals(result.getOrNull(), true)
     }
@@ -45,7 +45,7 @@ class AddToDoUseCaseTest {
     fun `Add To Do Failed`() = runTest {
         
         coEvery {
-            repositoy.addOrEditToDo(TEST_DATA)
+            repositoy.addOrEditTask(TEST_DATA)
         } returns Result.success(false)
         
         val result = SUT(
@@ -55,7 +55,7 @@ class AddToDoUseCaseTest {
         )
         
         coVerify(exactly = 1) {
-            repositoy.addOrEditToDo(TEST_DATA)
+            repositoy.addOrEditTask(TEST_DATA)
         }
         assertEquals(result.getOrNull(), false)
     }
@@ -64,7 +64,7 @@ class AddToDoUseCaseTest {
     fun `Add To Do Got Exception`() = runTest {
         
         coEvery {
-            repositoy.addOrEditToDo(TEST_DATA)
+            repositoy.addOrEditTask(TEST_DATA)
         } returns Result.failure(TEST_EXCEPTION)
         
         val result = SUT(
@@ -74,13 +74,13 @@ class AddToDoUseCaseTest {
         )
         
         coVerify(exactly = 1) {
-            repositoy.addOrEditToDo(TEST_DATA)
+            repositoy.addOrEditTask(TEST_DATA)
         }
         assertEquals(result.exceptionOrNull(), TEST_EXCEPTION)
     }
     
     companion object {
-        val TEST_DATA = AddEditToDoParameter(
+        val TEST_DATA = AddEditTaskParameter(
             title = "Testing",
             dueDate = LocalDateTime.now(),
             description = null
