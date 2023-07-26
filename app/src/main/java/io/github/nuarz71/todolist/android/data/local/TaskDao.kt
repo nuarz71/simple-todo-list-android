@@ -22,7 +22,7 @@ internal interface TaskDao {
     fun getAllToDo(): Flow<List<TaskEntity>>
     
     @Query("DELETE FROM todo WHERE id=:id")
-    fun deleteTaskById(id: Long): Long
+    fun deleteTaskById(id: Long): Int
     
     @Query("DELETE FROM todo")
     fun deleteAllTask()

@@ -34,7 +34,7 @@ internal abstract class ToDoDatabase : RoomDatabase() {
 object LocalDateTimeConverter {
     @TypeConverter
     fun timestampToLocalDateTime(value: String?): LocalDateTime? {
-        return LocalDateTime.parse(value, DateTimeFormatter.ISO_ZONED_DATE_TIME)
+        return LocalDateTime.parse(value, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
     }
     
     @TypeConverter
