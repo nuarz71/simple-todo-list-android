@@ -17,4 +17,5 @@
     <string name="btn_save">Save</string>
     <string name="title_add_task">Add Task</string>
     <string name="title_edit_task">Edit Task</string>
+    <string name="delete_task_failed_message">Deleted Task with title %s failed</string>
 </resources>

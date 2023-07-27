@@ -9,6 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import io.github.nuarz71.todolist.android.ui.screen.addedittask.AddEditTaskScreen
+import io.github.nuarz71.todolist.android.ui.screen.listtask.ListTaskScreen
 
 @Composable
 fun TodoListNavGraph(
@@ -23,7 +25,7 @@ fun TodoListNavGraph(
             modifier = modifier
         ) {
             composable(route = ScreenRoute.ListScreen.ROUTE) {
-                //TODO: implementation screen
+                ListTaskScreen()
             }
             composable(
                 route = ScreenRoute.AddEditScreen.ROUTE_WITH_ARGS,
@@ -34,7 +36,7 @@ fun TodoListNavGraph(
                     }
                 )
             ) {
-                //TODO: implementation screen
+                AddEditTaskScreen()
             }
         }
     }
