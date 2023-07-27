@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">Todo List</string>
+    <string name="app_name">To Do List</string>
+    <string name="empty_task_placeholder">Empty Task, please Add Task or Generate Sample</string>
+    <string name="btn_add_task">Add Task</string>
+    <string name="btn_generate_dummy_tasks">Generate Sample Tasks</string>
+    <string name="desc_empty_task_info">Task Info</string>
+    <string name="desc_delete_the_task">Delete the task</string>
+    <string name="desc_due_date">Due date</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_done">Done</string>
+    <string name="hint_task_title">Title</string>
+    <string name="hint_task_due_date">Due Date</string>
+    <string name="placeholder_task_select_due_date">Select due date</string>
+    <string name="hint_task_description">Description</string>
+    <string name="placeholder_enter_task_description">Enter task description</string>
+    <string name="placeholder_enter_task_title">Enter task title</string>
+    <string name="btn_save">Save</string>
+    <string name="title_add_task">Add Task</string>
+    <string name="title_edit_task">Edit Task</string>
 </resources>
