@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import io.github.nuarz71.todolist.android.data.entity.TaskEntity
+import io.github.nuarz71.todolist.android.utils.DateTimeFormatterUtils
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -34,7 +35,7 @@ internal abstract class ToDoDatabase : RoomDatabase() {
 object LocalDateTimeConverter {
     @TypeConverter
     fun timestampToLocalDateTime(value: String?): LocalDateTime? {
-        return LocalDateTime.parse(value, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+        return LocalDateTime.parse(value, DateTimeFormatterUtils.ISO_OFFSET_DATE_TIME)
     }
     
     @TypeConverter

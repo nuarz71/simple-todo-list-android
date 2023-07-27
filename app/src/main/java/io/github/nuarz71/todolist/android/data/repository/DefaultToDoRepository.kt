@@ -29,11 +29,11 @@ internal class DefaultToDoRepository(
     override suspend fun generateTasks(): Result<Unit> {
         val today = LocalDateTime.now()
         val entities = mutableListOf<TaskEntity>().apply {
-            repeat(Random(System.currentTimeMillis()).nextInt(from = 10, until = 31)) { index ->
+            repeat(Random(System.currentTimeMillis()).nextInt(from = 3, until = 10)) { index ->
                 
                 add(
                     TaskEntity(
-                        title = "Task ${index.inc()}",
+                        title = "Task Sample ${index.inc()}",
                         description = "Description of task ${index.inc()}",
                         dueDate = today.plusDays(index.inc().toLong())
                     )
