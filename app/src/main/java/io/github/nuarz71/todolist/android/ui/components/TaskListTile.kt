@@ -26,7 +26,6 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -117,14 +116,13 @@ fun TaskListTile(
             )
         }
         task.description.ifNotBlank {
-            Text(
+            TextExpandable(
                 text = it,
-                maxLines = 2,
+                minLines = 2,
                 style = MaterialTheme.typography.bodyMedium,
-                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp, end = 16.dp, top = 8.dp)
+                    .padding(start = 16.dp, end = 10.dp, top = 8.dp)
             )
         }
         Spacer(modifier = Modifier.size(16.dp))
